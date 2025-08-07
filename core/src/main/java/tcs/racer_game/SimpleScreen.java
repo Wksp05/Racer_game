@@ -1,13 +1,17 @@
 package tcs.racer_game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class SimpleScreen implements Screen {
@@ -18,17 +22,19 @@ public class SimpleScreen implements Screen {
     final Sprite logo;
     final Vector2 velocity;
     final Vector2 imageSize;
+    final BitmapFont font;
 
     public SimpleScreen(Main game) {
         this.game = game;
 
         batch = new SpriteBatch();
-//        viewport = new FitViewport(8, 5);
         viewport = new FitViewport(800, 600);
         texture = new Texture("libgdx.png");
         logo = new Sprite(texture);
         velocity = new Vector2(80, 80);
         imageSize = new Vector2(378, 63);
+        font = new BitmapFont();
+        font.getData().setScale(3.0f);
     }
 
     @Override
@@ -61,11 +67,17 @@ public class SimpleScreen implements Screen {
     @Override
     public void render(float delta) {
         move(delta);
+        if(Gdx.input.isTouched()) {
+            game.setScreen(new NotSoSimpleScreen(game));
+            return;
+        }
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         logo.draw(batch);
+        font.draw(batch, "Tap anywhere to begin", 170, 150);
+        //We need some better font
         batch.end();
     }
 
@@ -93,5 +105,6 @@ public class SimpleScreen implements Screen {
     public void dispose() {
         batch.dispose();
         texture.dispose();
+        font.dispose();
     }
 }
