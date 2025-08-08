@@ -7,9 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
+import tcs.racer_game.car.Car;
+import tcs.racer_game.car.simplecar.SimpleCar;
 
 public class NotSoSimpleScreen implements Screen {
     final Main game;
@@ -18,6 +19,7 @@ public class NotSoSimpleScreen implements Screen {
     final Texture texture;
     final Sprite logo;
     final Camera camera;
+    final Car car;
 
     NotSoSimpleScreen(Main game) {
         this.game = game;
@@ -29,6 +31,7 @@ public class NotSoSimpleScreen implements Screen {
         logo.setSize(720, 720);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
         camera.update();
+        car = new SimpleCar(batch);
     }
 
     @Override
@@ -38,13 +41,14 @@ public class NotSoSimpleScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        car.input(delta);
         ScreenUtils.clear(Color.BLUE);
         viewport.apply();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         logo.draw(batch);
-
+        car.draw(delta);
         batch.end();
     }
 
