@@ -1,13 +1,14 @@
 package tcs.racer_game.car;
 
 import com.badlogic.gdx.math.Vector2;
+import tcs.racer_game.math.Angle;
 
 /// I don't feel there is a need to make an interface at this point
 public abstract class Car {
     public final Vector2 carPosition;
     /// currently unused, angle of the car (in radians?)
     /// it might make sense to use normalized Vector2 instead (?)
-    public float carAngle;
+    public Angle carAngle = new Angle();
     // they cannot be final
     // (https://stackoverflow.com/questions/59809617/using-this-keyword-in-super-constructor)
     protected CarInput carInput;
