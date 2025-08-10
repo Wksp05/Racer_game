@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class Main extends Game {
 
+    // Test - to destroy
     @Override
     public void create() {
         this.setScreen(new SimpleScreen(this));
