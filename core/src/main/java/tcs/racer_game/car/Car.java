@@ -9,6 +9,11 @@ public abstract class Car {
     /// currently unused, angle of the car (in radians?)
     /// it might make sense to use normalized Vector2 instead (?)
     public Angle carAngle = new Angle();
+
+    /// Some stats, that should be in car (?), because where else
+    public float speed = 0;
+    public float acceleration = 0;
+
     // they cannot be final
     // (https://stackoverflow.com/questions/59809617/using-this-keyword-in-super-constructor)
     protected CarInput carInput;

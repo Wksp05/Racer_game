@@ -8,7 +8,6 @@ import tcs.racer_game.car.CarInput;
 public class CarV2Steering implements CarInput {
     final Car car;
     final float HALF_SQRT2 = (float) Math.sqrt(2) / 2;
-    float speed = 0;
 
     public CarV2Steering(Car car) {
         this.car = car;
@@ -16,26 +15,25 @@ public class CarV2Steering implements CarInput {
 
     @Override
     public void input(float delta) {
-        float dx = 0;
-        float dy = 0;
-        float speed = 250;
+
+        ///  Turn (Left and Right)
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-            dx -= speed;
+            car.carAngle.rotateDegrees(90 * delta);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
-            dx += speed;
+            car.carAngle.rotateDegrees(-90 * delta);
         }
+        ///  Brake
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-            dy -= speed;
+            car.speed = 0;
+            car.acceleration = 0;
         }
+        ///  Gas pedal
         if(Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
-            dy += speed;
+            car.acceleration += 100 * delta;
+            System.out.println("Gas pressed");
+        }else{
+            car.acceleration = 0;
         }
-        if(dx != 0 && dy != 0) {
-            dx *= HALF_SQRT2;
-            dy *= HALF_SQRT2;
-        }
-        car.carPosition.add(dx * delta, dy * delta);
-
     }
 }

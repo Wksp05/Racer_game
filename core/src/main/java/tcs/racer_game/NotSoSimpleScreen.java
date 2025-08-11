@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
 import tcs.racer_game.car.Car;
+import tcs.racer_game.car.carv2.simplecar.CarV2;
 import tcs.racer_game.car.simplecar.SimpleCar;
 
 public class NotSoSimpleScreen implements Screen {
@@ -31,7 +32,8 @@ public class NotSoSimpleScreen implements Screen {
         logo.setSize(720, 720);
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
         camera.update();
-        car = new SimpleCar(batch);
+        car = new CarV2(batch);
+//        car = new SimpleCar(batch);
     }
 
     @Override
@@ -42,6 +44,7 @@ public class NotSoSimpleScreen implements Screen {
     @Override
     public void render(float delta) {
         car.input(delta);
+        car.logic(delta);
         ScreenUtils.clear(Color.BLUE);
         viewport.apply();
         camera.update();
