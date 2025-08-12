@@ -12,5 +12,6 @@ public class CarV2 extends Car {
         carRender = new CarTextureRender(this, batch, new Texture("pixelOrangeCar.png"));
         carInput = new CarV2Steering(this);
         carLogic = new CarV2Logic(this);
+        carGearbox = new CarV2Gearbox();
     }
 }

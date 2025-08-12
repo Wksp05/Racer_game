@@ -14,6 +14,8 @@ public abstract class Car {
     public float speed = 0;
     public float acceleration = 0;
 
+    public Gearbox carGearbox;
+
     // they cannot be final
     // (https://stackoverflow.com/questions/59809617/using-this-keyword-in-super-constructor)
     protected CarInput carInput;
