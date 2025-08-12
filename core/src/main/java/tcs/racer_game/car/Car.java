@@ -18,7 +18,7 @@ public abstract class Car {
     // (https://stackoverflow.com/questions/59809617/using-this-keyword-in-super-constructor)
     protected CarInput carInput;
     protected CarLogic carLogic;
-    protected CarRender painter;
+    protected CarRender carRender;
 
     protected Car() {
         carPosition = new Vector2();
@@ -33,6 +33,6 @@ public abstract class Car {
     }
 
     public void draw(float delta) {
-        painter.render(delta);
+        carRender.render(delta);
     }
 }
