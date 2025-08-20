@@ -1,4 +1,4 @@
-package tcs.racer_game.car.carv2.simplecar;
+package tcs.racer_game.car.carv2;
 
 import com.badlogic.gdx.math.Vector2;
 import tcs.racer_game.car.Car;

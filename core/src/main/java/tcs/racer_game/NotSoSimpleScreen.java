@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
 import tcs.racer_game.car.Car;
-import tcs.racer_game.car.carv2.simplecar.CarV2;
-import tcs.racer_game.car.simplecar.SimpleCar;
+import tcs.racer_game.car.carv2.CarV2;
 
 public class NotSoSimpleScreen implements Screen {
     final Main game;

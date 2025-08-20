@@ -1,4 +1,4 @@
-package tcs.racer_game.car.carv2.simplecar;
+package tcs.racer_game.car.carv2;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

@@ -1,4 +1,4 @@
-package tcs.racer_game.car.carv2.simplecar;
+package tcs.racer_game.car.carv2;
 
 import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.Gearbox;
