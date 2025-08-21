@@ -14,6 +14,10 @@ public class Angle {
         this.angle = bound360(angle);
     }
 
+    public Angle(Angle oldAngle){
+        angle = oldAngle.angle;
+    }
+
     public Vector2 asVector2(){
         double angleRadians = Math.toRadians(angle);
         return new Vector2((float) Math.cos(angleRadians),

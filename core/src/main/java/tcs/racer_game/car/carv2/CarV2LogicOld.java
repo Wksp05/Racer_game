@@ -4,19 +4,19 @@ import com.badlogic.gdx.math.Vector2;
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.CarLogic;
 
-public class CarV2Logic implements CarLogic {
+public class CarV2LogicOld implements CarLogic {
     Car car;
 
-    CarV2Logic(Car car){
+    CarV2LogicOld(Car car){
         this.car = car;
     }
 
     @Override
     public void logic(float delta) {
-        car.carEngine.makePrediction(delta);
-        car.speed = car.carEngine.getPredictedSpeed();
-        car.carPosition = car.carEngine.getPredictedPosition();
-        car.carAngle = car.carEngine.getPredictedAngle();
+        car.speed = car.speed + car.acceleration * delta;
+        Vector2 change = car.carAngle.asVector2(car.speed * delta);
+        car.carPosition.x += change.x;
+        car.carPosition.y += change.y;
         System.out.println("Logic Done" + car.speed);
     }
 }

@@ -1,10 +1,12 @@
 package tcs.racer_game.car.carv2;
 
+import tcs.racer_game.car.Car;
 import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.Gearbox;
 import tcs.racer_game.car.State;
 
 public class CarV2Gearbox implements Gearbox {
+    Car car;
 
     State stateBrake = State.OFF;
     float valueBrake = 0;
@@ -13,7 +15,11 @@ public class CarV2Gearbox implements Gearbox {
     State stateTurn = State.OFF;
     Direction turnDirection = Direction.none;
     float valueTurn = 0;
+    Direction changeGear = Direction.none;
 
+    CarV2Gearbox(Car car){
+        this.car = car;
+    }
 
     @Override
     public void setBrake(State state, float value) {
@@ -90,5 +96,66 @@ public class CarV2Gearbox implements Gearbox {
         }
 
 
+    }
+
+    @Override
+    public void setGear(Direction direction) {
+        if(direction == Direction.left || direction == Direction.right){
+            throw new IllegalArgumentException("setGear in gearbox get wrong direction change");
+        }
+        changeGear = direction;
+    }
+
+    @Override
+    public boolean brakePressed() {
+        return stateBrake == State.ON;
+    }
+
+    @Override
+    public boolean gasPressed() {
+        return stateGas == State.ON;
+    }
+
+    @Override
+    public boolean turnPressed() {
+        return stateTurn == State.ON;
+    }
+
+    @Override
+    public boolean gearPressed() {
+        return changeGear != Direction.none;
+    }
+
+    @Override
+    public float getBrake() {
+        return valueBrake;
+    }
+
+    @Override
+    public float getGas() {
+        return valueGas;
+    }
+
+    @Override
+    public float getTurnNormalized() {
+        if(turnDirection == Direction.left){
+            return valueTurn;
+        } else if (turnDirection == Direction.right) {
+            return valueTurn * -1;
+        }
+        return 0;
+    }
+
+    @Override
+    public float getAccelaration(float delta){
+        if(stateBrake == State.ON){
+            return -10000 * delta * valueBrake / 100;
+        }
+        float ans = 0;
+        if(stateGas == State.ON){
+            ans += 300 * delta * valueGas / 100;
+        }
+        // TODO - gear should impact acceleration
+        return ans;
     }
 }

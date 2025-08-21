@@ -9,5 +9,21 @@ public interface Gearbox {
 
     void setTurn(State state, Direction direction, float value);
 
+    void setGear(Direction direction);
 
+    boolean brakePressed();
+
+    boolean gasPressed();
+
+    boolean turnPressed();
+
+    boolean gearPressed();
+
+    float getBrake();
+
+    float getGas();
+
+    float getTurnNormalized();
+
+    float getAccelaration(float delta);
 }

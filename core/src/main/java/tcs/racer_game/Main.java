@@ -11,7 +11,11 @@ public class Main extends Game {
     // Test - to destroy
     @Override
     public void create() {
-        this.setScreen(new SimpleScreen(this));
+        try {
+            this.setScreen(new SimpleScreen(this));
+        }catch (Exception ex){
+            System.out.println(ex.toString());
+        }
 
     }
 }
