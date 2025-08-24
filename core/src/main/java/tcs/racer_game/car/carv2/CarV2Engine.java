@@ -25,7 +25,7 @@ public class CarV2Engine implements Engine {
             predictedSpeed = 0;
             delta = car.speed / predictedAcceleration;
         }
-        predictedAngle = new Angle(car.carAngle);
+        predictedAngle.angle = car.carAngle.angle;
         predictedAngle.rotateDegrees(car.carGearbox.getTurnNormalized());
         float distance = car.speed * delta + predictedAcceleration * delta * delta / 2;
         Vector2 predictedDistance = predictedAngle.asVector2(distance);

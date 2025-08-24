@@ -16,7 +16,8 @@ public class CarV2Logic implements CarLogic {
         car.carEngine.makePrediction(delta);
         car.speed = car.carEngine.getPredictedSpeed();
         car.carPosition = car.carEngine.getPredictedPosition();
-        car.carAngle = car.carEngine.getPredictedAngle();
-        System.out.println("Logic Done" + car.speed);
+        car.carAngle.angle = car.carEngine.getPredictedAngle().angle;
+        System.out.println("Logic Done" + car.speed + " Angle: " + car.carAngle.angle);
+
     }
 }

@@ -21,11 +21,11 @@ public class CarV2Steering implements CarInput {
         ///  Turn (Left and Right)
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
 //            car.carAngle.rotateDegrees(90 * delta);
-            car.carGearbox.setTurn(State.ON, Direction.left, 90 * delta);
+            car.carGearbox.setTurn(State.ON, Direction.left, 5 * delta);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
 //            car.carAngle.rotateDegrees(-90 * delta);
-            car.carGearbox.setTurn(State.ON, Direction.right, 90 * delta);
+            car.carGearbox.setTurn(State.ON, Direction.right, 5 * delta);
         }
         ///  Brake
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {

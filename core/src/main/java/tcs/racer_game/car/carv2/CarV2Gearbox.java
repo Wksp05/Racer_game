@@ -74,6 +74,7 @@ public class CarV2Gearbox implements Gearbox {
                     turnDirection = Direction.left;
                 }
             }else{
+                turnDirection = Direction.left;
                 valueTurn = value;
             }
         }
@@ -91,6 +92,7 @@ public class CarV2Gearbox implements Gearbox {
                     turnDirection = Direction.right;
                 }
             }else{
+                turnDirection = Direction.right;
                 valueTurn = value;
             }
         }
@@ -149,11 +151,11 @@ public class CarV2Gearbox implements Gearbox {
     @Override
     public float getAccelaration(float delta){
         if(stateBrake == State.ON){
-            return -10000 * delta * valueBrake / 100;
+            return -1000000 * delta * valueBrake / 100;
         }
         float ans = 0;
         if(stateGas == State.ON){
-            ans += 300 * delta * valueGas / 100;
+            ans += 1000 * delta * valueGas / 100;
         }
         // TODO - gear should impact acceleration
         return ans;
