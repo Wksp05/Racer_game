@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.CarInput;
+import tcs.racer_game.math.MathConst;
 
 public class SimpleSteering implements CarInput {
     final Car car;
-    final float HALF_SQRT2 = (float) Math.sqrt(2) / 2;
 
     public SimpleSteering(Car car) {
         this.car = car;
@@ -31,8 +31,8 @@ public class SimpleSteering implements CarInput {
             dy += speed;
         }
         if(dx != 0 && dy != 0) {
-            dx *= HALF_SQRT2;
-            dy *= HALF_SQRT2;
+            dx *= MathConst.HALF_SQRT2;
+            dy *= MathConst.HALF_SQRT2;
         }
         car.carPosition.add(dx * delta, dy * delta);
 

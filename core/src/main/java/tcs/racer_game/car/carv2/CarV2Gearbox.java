@@ -5,6 +5,9 @@ import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.Gearbox;
 import tcs.racer_game.car.State;
 
+import static java.lang.Float.max;
+import static java.lang.Float.min;
+
 public class CarV2Gearbox implements Gearbox {
     Car car;
 
@@ -96,8 +99,7 @@ public class CarV2Gearbox implements Gearbox {
                 valueTurn = value;
             }
         }
-
-
+        valueTurn = min(valueTurn, CarV2Const.MAX_TURN);
     }
 
     @Override
@@ -151,11 +153,11 @@ public class CarV2Gearbox implements Gearbox {
     @Override
     public float getAccelaration(float delta){
         if(stateBrake == State.ON){
-            return -1000000 * delta * valueBrake / 100;
+            return CarV2Const.BRAKE * delta * valueBrake / 100;
         }
         float ans = 0;
         if(stateGas == State.ON){
-            ans += 1000 * delta * valueGas / 100;
+            ans += CarV2Const.GAS * delta * valueGas / 100;
         }
         // TODO - gear should impact acceleration
         return ans;
