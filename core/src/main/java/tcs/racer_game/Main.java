@@ -12,6 +12,7 @@ public class Main extends Game {
     @Override
     public void create() {
         try {
+//            this.setScreen(new MainMenuScreen());
             this.setScreen(new SimpleScreen(this));
         }catch (Exception ex){
             System.out.println(ex.toString());

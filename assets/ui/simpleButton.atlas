@@ -1,0 +1,21 @@
+
+simpleButton.png
+size: 64, 32
+format: RGBA8888
+repeat: none
+button2
+  rotate: false
+  xy: 1, 23
+  size: 32, 8
+  split: 0, 0, 0, 0
+  pad: 3, 3, 1, 1
+  orig: 32, 8
+  offset: 0, 0
+  index: -1
+simpleButton
+  rotate: false
+  xy: 1, 23
+  size: 32, 8
+  orig: 32, 8
+  offset: 0, 0
+  index: -1
