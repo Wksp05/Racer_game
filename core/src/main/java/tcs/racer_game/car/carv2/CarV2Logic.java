@@ -17,6 +17,7 @@ public class CarV2Logic implements CarLogic {
         car.speed = car.carEngine.getPredictedSpeed();
         car.carPosition = car.carEngine.getPredictedPosition();
         car.carAngle.angle = car.carEngine.getPredictedAngle().angle;
+        car.carGearbox.updateTurnDrop(delta);
         System.out.println("Logic Done" + car.speed + " Angle: " + car.carAngle.angle);
 
     }

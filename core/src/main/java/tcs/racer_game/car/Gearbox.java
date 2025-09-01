@@ -26,4 +26,6 @@ public interface Gearbox {
     float getTurnNormalized();
 
     float getAccelaration(float delta);
+
+    void updateTurnDrop(float delta);
 }

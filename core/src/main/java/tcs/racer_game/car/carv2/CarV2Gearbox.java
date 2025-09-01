@@ -162,4 +162,14 @@ public class CarV2Gearbox implements Gearbox {
         // TODO - gear should impact acceleration
         return ans;
     }
+
+    @Override
+    public void updateTurnDrop(float delta) {
+        valueTurn = valueTurn - CarV2Const.TURN_DROP * delta;
+        if(valueTurn <= 0){
+            valueTurn = 0;
+            turnDirection = Direction.none;
+
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package tcs.racer_game;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
+import tcs.racer_game.board.GameBoard;
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.carv2.CarV2;
@@ -23,6 +25,7 @@ public class NotSoSimpleScreen implements Screen {
     final Sprite logo;
     final Camera camera;
     final Car car;
+    final GameBoard gameBoard;
 
     NotSoSimpleScreen(Main game) {
         this.game = game;
@@ -36,6 +39,8 @@ public class NotSoSimpleScreen implements Screen {
         camera.update();
         car = new CarV2(batch);
 //        car = new SimpleCar(batch);
+        gameBoard = new GameBoard(batch);
+
     }
 
     @Override
@@ -45,18 +50,21 @@ public class NotSoSimpleScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        car.input(delta);
-        car.logic(delta);
+        gameBoard.input(delta);
+        gameBoard.logic(delta);
+//        car.input(delta);
+//        car.logic(delta);
         ScreenUtils.clear(Color.BLUE);
         viewport.apply();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         logo.draw(batch);
-        car.draw(delta);
+//        car.draw(delta);
+        gameBoard.render(delta);
         batch.end();
 
-        camera.position.set(car.carPosition.x, car.carPosition.y, 0);
+        camera.position.set(gameBoard.getMainPlayer().carPosition.x, gameBoard.getMainPlayer().carPosition.y, 0);
 
     }
 
