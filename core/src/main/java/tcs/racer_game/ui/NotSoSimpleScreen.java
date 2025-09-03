@@ -1,8 +1,5 @@
-package tcs.racer_game;
+package tcs.racer_game.ui;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
@@ -12,9 +9,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
-import tcs.racer_game.board.GameBoard;
+import tcs.racer_game.Main;
+import tcs.racer_game.board.SimpleBoard;
 import tcs.racer_game.car.Car;
-import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.carv2.CarV2;
 
 public class NotSoSimpleScreen implements Screen {
@@ -25,7 +22,7 @@ public class NotSoSimpleScreen implements Screen {
     final Sprite logo;
     final Camera camera;
     final Car car;
-    final GameBoard gameBoard;
+    final SimpleBoard gameBoard;
 
     NotSoSimpleScreen(Main game) {
         this.game = game;
@@ -39,7 +36,7 @@ public class NotSoSimpleScreen implements Screen {
         camera.update();
         car = new CarV2(batch);
 //        car = new SimpleCar(batch);
-        gameBoard = new GameBoard(batch);
+        gameBoard = new SimpleBoard(batch);
 
     }
 
