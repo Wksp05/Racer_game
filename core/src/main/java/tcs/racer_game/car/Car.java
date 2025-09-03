@@ -6,8 +6,6 @@ import tcs.racer_game.math.Angle;
 /// I don't feel there is a need to make an interface at this point
 public abstract class Car {
     public Vector2 carPosition;
-    /// currently unused, angle of the car (in radians?)
-    /// it might make sense to use normalized Vector2 instead (?)
     public Angle carAngle = new Angle();
 
     /// Some stats, that should be in car (?), because where else
