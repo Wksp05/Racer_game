@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import tcs.racer_game.Main;
+import tcs.racer_game.board.Board;
+import tcs.racer_game.board.ComplexBoard;
 import tcs.racer_game.board.SimpleBoard;
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.carv2.CarV2;
@@ -20,7 +22,7 @@ public class StupidWithPhysicsScreen implements Screen {
     final SpriteBatch batch;
     final Viewport viewport;
     final Car car;
-    final SimpleBoard gameBoard;
+    final Board gameBoard;
 
     StupidWithPhysicsScreen(Main game){
         this.game = game;
@@ -30,7 +32,7 @@ public class StupidWithPhysicsScreen implements Screen {
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
         camera.update();
         car = new CarV2(batch);
-        gameBoard = new SimpleBoard(batch);
+        gameBoard = new ComplexBoard(batch, camera);
     }
 
     @Override
@@ -43,6 +45,7 @@ public class StupidWithPhysicsScreen implements Screen {
         gameBoard.input(delta);
         gameBoard.logic(delta);
         ScreenUtils.clear(Color.GREEN);
+        camera.position.set(gameBoard.getMainPlayer().carPosition.x, gameBoard.getMainPlayer().carPosition.y, 0);
         viewport.apply();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
@@ -50,7 +53,6 @@ public class StupidWithPhysicsScreen implements Screen {
         gameBoard.render(delta);
         batch.end();
 
-        camera.position.set(gameBoard.getMainPlayer().carPosition.x, gameBoard.getMainPlayer().carPosition.y, 0);
 
     }
 

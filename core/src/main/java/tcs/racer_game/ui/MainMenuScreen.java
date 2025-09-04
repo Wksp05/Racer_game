@@ -44,6 +44,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new NotSoSimpleScreen(game));
+                dispose();
             }
         });
 
@@ -51,6 +52,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new StupidWithPhysicsScreen(game));
+                dispose();
             }
         });
 
@@ -106,6 +108,8 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
+        stage.dispose();
+        skin.dispose();
 
     }
 }
