@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.carv2.CarV2;
+import tcs.racer_game.car.simplecar.SimpleCar;
 
 public class ComplexBoard implements Board{
 
@@ -22,7 +23,7 @@ public class ComplexBoard implements Board{
     Sprite squareSprite;
 
     public ComplexBoard(SpriteBatch batch, Camera camera){
-        playerCar = new CarV2(batch);
+        playerCar = new SimpleCar(batch);
         this.batch = batch;
         this.camera = camera;
         world = new World(Vector2.Zero, true);
@@ -55,7 +56,7 @@ public class ComplexBoard implements Board{
 
     private Texture createSquareTexture(int width, int height) {
         Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
-        pixmap.setColor(1, 0, 0, 1); // Ustaw kolor (czerwony)
+        pixmap.setColor(0.5f, 0, 1, 1); // Ustaw kolor
         pixmap.fill(); // Wypełnij kwadrat kolorem
         Texture texture = new Texture(pixmap);
         pixmap.dispose(); // Zwolnij pamięć

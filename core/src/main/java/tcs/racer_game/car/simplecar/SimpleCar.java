@@ -12,5 +12,6 @@ public class SimpleCar extends Car {
         carInput = new SimpleSteering(this);
         /// no logic
         carLogic = delta -> {};
+        carAngle.rotateDegrees(90);
     }
 }
