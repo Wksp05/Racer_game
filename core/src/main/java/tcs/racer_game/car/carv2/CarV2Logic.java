@@ -1,12 +1,12 @@
 package tcs.racer_game.car.carv2;
 
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.CarLogic;
 
 public class CarV2Logic implements CarLogic {
-    Car car;
+    NotPhysicalCar car;
 
-    CarV2Logic(Car car){
+    CarV2Logic(NotPhysicalCar car){
         this.car = car;
     }
 
@@ -16,7 +16,7 @@ public class CarV2Logic implements CarLogic {
         car.speed = car.carEngine.getPredictedSpeed();
         car.carPosition = car.carEngine.getPredictedPosition();
         car.carAngle.angle = car.carEngine.getPredictedAngle().angle;
-        car.carGearbox.updateTurnDrop(delta);
+        car.gearbox().updateTurnDrop(delta);
         System.out.println("Logic Done" + car.speed + " Angle: " + car.carAngle.angle);
 
     }

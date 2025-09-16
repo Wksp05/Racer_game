@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
 import tcs.racer_game.Main;
 import tcs.racer_game.board.SimpleBoard;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.carv2.CarV2;
 
 public class NotSoSimpleScreen implements Screen {
@@ -21,7 +21,7 @@ public class NotSoSimpleScreen implements Screen {
     final Texture texture;
     final Sprite logo;
     final Camera camera;
-    final Car car;
+    final NotPhysicalCar car;
     final SimpleBoard gameBoard;
 
     NotSoSimpleScreen(Main game) {

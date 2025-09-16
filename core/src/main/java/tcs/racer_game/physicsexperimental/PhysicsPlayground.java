@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import tcs.racer_game.board.Board;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PhysicsPlayground implements Board {
 
-    Car car = new Car() {};
+    NotPhysicalCar car = new NotPhysicalCar() {};
     final SpriteBatch batch;
     final Camera camera;
     final World world;
@@ -43,11 +43,11 @@ public class PhysicsPlayground implements Board {
             p.add(-50, 0);
             squareList.add(new Rectangle(world, p, size));
         }
-        squareList.get(0).body.setLinearVelocity(-120, -175);
+        squareList.get(0).body.setLinearVelocity(-120, 0);
     }
 
     @Override
-    public Car getMainPlayer() {
+    public NotPhysicalCar getMainPlayer() {
         return car;
     }
 

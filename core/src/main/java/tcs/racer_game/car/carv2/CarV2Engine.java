@@ -1,32 +1,32 @@
 package tcs.racer_game.car.carv2;
 
 import com.badlogic.gdx.math.Vector2;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.Engine;
 import tcs.racer_game.math.Angle;
 
 public class CarV2Engine implements Engine {
-    Car car;
+    NotPhysicalCar car;
 
     float predictedAcceleration = 0;
     float predictedSpeed = 0;
     Vector2 predictedPosition = new Vector2(0, 0);
     Angle predictedAngle = new Angle();
 
-    CarV2Engine(Car car){
+    CarV2Engine(NotPhysicalCar car){
         this.car = car;
     }
 
     @Override
     public void makePrediction(float delta) {
-        predictedAcceleration = car.acceleration + car.carGearbox.getAccelaration(delta);
+        predictedAcceleration = car.acceleration + car.gearbox().getAcceleration(delta);
         predictedSpeed = car.speed + predictedAcceleration * delta;
         if(predictedSpeed < 0){
             predictedSpeed = 0;
             delta = car.speed / predictedAcceleration;
         }
         predictedAngle.angle = car.carAngle.angle;
-        predictedAngle.rotateDegrees(car.carGearbox.getTurnNormalized());
+        predictedAngle.rotateDegrees(car.gearbox().getTurnNormalized());
         float distance = car.speed * delta + predictedAcceleration * delta * delta / 2;
         Vector2 predictedDistance = predictedAngle.asVector2(distance);
         predictedPosition.x = car.carPosition.x + predictedDistance.x;

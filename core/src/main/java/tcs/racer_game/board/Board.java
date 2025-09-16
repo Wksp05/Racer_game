@@ -1,9 +1,9 @@
 package tcs.racer_game.board;
 
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 
 public interface Board {
-    Car getMainPlayer();
+    NotPhysicalCar getMainPlayer();
     void start();
     void input(float delta);
     void logic(float delta);

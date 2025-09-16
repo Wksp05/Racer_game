@@ -17,8 +17,8 @@ public class CarTextureRender implements CarRender {
 
     @Override
     public void render(float delta) {
-        sprite.setPosition(car.carPosition.x, car.carPosition.y);
-        sprite.setRotation(car.carAngle.angle);
+        sprite.setPosition(car.getX(), car.getY());
+        sprite.setRotation(car.angle().angle);
         sprite.draw(batch);
     }
 }

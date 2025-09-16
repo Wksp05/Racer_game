@@ -2,10 +2,10 @@ package tcs.racer_game.car.carv2;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.CarTextureRender;
 
-public class CarV2 extends Car {
+public class CarV2 extends NotPhysicalCar {
     public CarV2(SpriteBatch batch) {
         super();
         carAngle.rotateDegrees(90);

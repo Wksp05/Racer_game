@@ -151,7 +151,7 @@ public class CarV2Gearbox implements Gearbox {
     }
 
     @Override
-    public float getAccelaration(float delta){
+    public float getAcceleration(float delta){
         if(stateBrake == State.ON){
             return CarV2Const.BRAKE * delta * valueBrake / 100;
         }

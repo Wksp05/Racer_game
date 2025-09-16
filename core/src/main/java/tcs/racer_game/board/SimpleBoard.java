@@ -1,12 +1,12 @@
 package tcs.racer_game.board;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.carv2.CarV2;
 
 public class SimpleBoard implements Board{
 
-    Car playerCar;
+    NotPhysicalCar playerCar;
     SpriteBatch batch;
 
     public SimpleBoard(SpriteBatch batch){
@@ -15,7 +15,7 @@ public class SimpleBoard implements Board{
     }
 
     @Override
-    public Car getMainPlayer(){
+    public NotPhysicalCar getMainPlayer(){
         return playerCar;
     }
 

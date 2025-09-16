@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import tcs.racer_game.Main;
 import tcs.racer_game.board.Board;
 import tcs.racer_game.physicsexperimental.PhysicsPlayground;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.carv2.CarV2;
 
 public class StupidWithPhysicsScreen implements Screen {
@@ -20,7 +20,7 @@ public class StupidWithPhysicsScreen implements Screen {
     final Camera camera;
     final SpriteBatch batch;
     final Viewport viewport;
-    final Car car;
+    final NotPhysicalCar car;
     final Board gameBoard;
 
     StupidWithPhysicsScreen(Main game){

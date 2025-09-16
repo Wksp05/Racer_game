@@ -8,13 +8,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import tcs.racer_game.car.Car;
-import tcs.racer_game.car.carv2.CarV2;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.simplecar.SimpleCar;
 
 public class ComplexBoard implements Board{
 
-    final Car playerCar;
+    final NotPhysicalCar playerCar;
     final SpriteBatch batch;
     final World world;
     final Camera camera;
@@ -64,7 +63,7 @@ public class ComplexBoard implements Board{
     }
 
     @Override
-    public Car getMainPlayer(){
+    public NotPhysicalCar getMainPlayer(){
         return playerCar;
     }
 

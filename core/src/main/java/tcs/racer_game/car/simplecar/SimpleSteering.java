@@ -2,14 +2,14 @@ package tcs.racer_game.car.simplecar;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import tcs.racer_game.car.Car;
+import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.CarInput;
 import tcs.racer_game.math.MathConst;
 
 public class SimpleSteering implements CarInput {
-    final Car car;
+    final NotPhysicalCar car;
 
-    public SimpleSteering(Car car) {
+    public SimpleSteering(NotPhysicalCar car) {
         this.car = car;
     }
 
