@@ -12,7 +12,7 @@ public class CarV2 extends NotPhysicalCar {
         carRender = new CarTextureRender(this, batch, new Texture("pixelOrangeCar.png"));
         carInput = new CarV2Steering(this);
         carLogic = new CarV2Logic(this);
-        carGearbox = new CarV2Gearbox(this);
+        carInputData = new CarV2InputData(this);
         carEngine = new CarV2Engine(this);
     }
 }

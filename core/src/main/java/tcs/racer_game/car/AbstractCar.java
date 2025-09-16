@@ -5,7 +5,7 @@ public abstract class AbstractCar implements Car{
     protected CarInput carInput;
     protected CarLogic carLogic;
     protected CarRender carRender;
-    protected Gearbox carGearbox;
+    protected InputData carInputData;
 
     @Override
     public void input(float delta) {
@@ -23,7 +23,7 @@ public abstract class AbstractCar implements Car{
     }
 
     @Override
-    public Gearbox gearbox() {
-        return carGearbox;
+    public InputData inputData() {
+        return carInputData;
     }
 }

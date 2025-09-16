@@ -2,13 +2,12 @@ package tcs.racer_game.car.carv2;
 
 import tcs.racer_game.car.Car;
 import tcs.racer_game.car.Direction;
-import tcs.racer_game.car.Gearbox;
+import tcs.racer_game.car.InputData;
 import tcs.racer_game.car.State;
 
-import static java.lang.Float.max;
 import static java.lang.Float.min;
 
-public class CarV2Gearbox implements Gearbox {
+public class CarV2InputData implements InputData {
     Car car;
 
     State stateBrake = State.OFF;
@@ -20,7 +19,7 @@ public class CarV2Gearbox implements Gearbox {
     float valueTurn = 0;
     Direction changeGear = Direction.none;
 
-    CarV2Gearbox(Car car){
+    CarV2InputData(Car car){
         this.car = car;
     }
 

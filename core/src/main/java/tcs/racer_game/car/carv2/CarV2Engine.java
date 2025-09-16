@@ -19,14 +19,14 @@ public class CarV2Engine implements Engine {
 
     @Override
     public void makePrediction(float delta) {
-        predictedAcceleration = car.acceleration + car.gearbox().getAcceleration(delta);
+        predictedAcceleration = car.acceleration + car.inputData().getAcceleration(delta);
         predictedSpeed = car.speed + predictedAcceleration * delta;
         if(predictedSpeed < 0){
             predictedSpeed = 0;
             delta = car.speed / predictedAcceleration;
         }
         predictedAngle.angle = car.carAngle.angle;
-        predictedAngle.rotateDegrees(car.gearbox().getTurnNormalized());
+        predictedAngle.rotateDegrees(car.inputData().getTurnNormalized());
         float distance = car.speed * delta + predictedAcceleration * delta * delta / 2;
         Vector2 predictedDistance = predictedAngle.asVector2(distance);
         predictedPosition.x = car.carPosition.x + predictedDistance.x;

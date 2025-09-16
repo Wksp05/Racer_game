@@ -9,7 +9,7 @@ public interface Car {
     void draw(float delta);
     float speed();
     float acceleration();
-    Gearbox gearbox();
+    InputData inputData();
     Vector2 position();
     default float getX() {
         return position().x;

@@ -1,6 +1,6 @@
 package tcs.racer_game.car;
 
-public interface Gearbox {
+public interface InputData {
 
     ///  value is in percent (%)
     void setBrake(State state, float value);
@@ -25,7 +25,9 @@ public interface Gearbox {
 
     float getTurnNormalized();
 
+    //TODO: get rid of this
     float getAcceleration(float delta);
 
+    //TODO: get rid of this (or just rename)
     void updateTurnDrop(float delta);
 }
