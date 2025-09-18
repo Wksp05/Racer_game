@@ -4,6 +4,7 @@ import tcs.racer_game.car.Car;
 import tcs.racer_game.car.Direction;
 import tcs.racer_game.car.InputData;
 import tcs.racer_game.car.State;
+import tcs.racer_game.core.Observer;
 
 import static java.lang.Float.min;
 
@@ -18,15 +19,18 @@ public class CarV2InputData implements InputData {
     Direction turnDirection = Direction.none;
     float valueTurn = 0;
     Direction changeGear = Direction.none;
+    Observer turnUpdater;
 
     CarV2InputData(Car car){
         this.car = car;
+        turnUpdater = this::updateTurnDrop;
+        car.registerForEventNoThrow(turnUpdater, "beforeLogic");
     }
 
     @Override
     public void setBrake(State state, float value) {
         if(value < 0 || value > 100){
-            throw new IllegalArgumentException("value lesser then zero in Gearbox");
+            throw new IllegalArgumentException("value less then zero in InputData");
         }
         stateBrake = state;
         if(state == State.ON){
@@ -39,7 +43,7 @@ public class CarV2InputData implements InputData {
     @Override
     public void setGas(State state, float value) {
         if(value < 0 || value > 100){
-            throw new IllegalArgumentException("value lesser then zero in Gearbox");
+            throw new IllegalArgumentException("value less then zero in InputData");
         }
         stateGas = state;
         if(state == State.ON){
@@ -52,7 +56,7 @@ public class CarV2InputData implements InputData {
     @Override
     public void setTurn(State state, Direction direction, float value) {
         if(value < 0){
-            throw new IllegalArgumentException("value lesser then zero in Gearbox");
+            throw new IllegalArgumentException("value lesser then zero in InputData");
         }
         if(state == State.OFF){
             turnDirection = Direction.none;
@@ -149,21 +153,7 @@ public class CarV2InputData implements InputData {
         return 0;
     }
 
-    @Override
-    public float getAcceleration(float delta){
-        if(stateBrake == State.ON){
-            return CarV2Const.BRAKE * delta * valueBrake / 100;
-        }
-        float ans = 0;
-        if(stateGas == State.ON){
-            ans += CarV2Const.GAS * delta * valueGas / 100;
-        }
-        // TODO - gear should impact acceleration
-        return ans;
-    }
-
-    @Override
-    public void updateTurnDrop(float delta) {
+    void updateTurnDrop(float delta) {
         valueTurn = valueTurn - CarV2Const.TURN_DROP * delta;
         if(valueTurn <= 0){
             valueTurn = 0;

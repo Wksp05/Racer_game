@@ -3,6 +3,7 @@ package tcs.racer_game.car.carv2;
 import com.badlogic.gdx.math.Vector2;
 import tcs.racer_game.car.NotPhysicalCar;
 import tcs.racer_game.car.Engine;
+import tcs.racer_game.car.State;
 import tcs.racer_game.math.Angle;
 
 public class CarV2Engine implements Engine {
@@ -19,7 +20,7 @@ public class CarV2Engine implements Engine {
 
     @Override
     public void makePrediction(float delta) {
-        predictedAcceleration = car.acceleration + car.inputData().getAcceleration(delta);
+        predictedAcceleration = car.acceleration + getAcceleration(delta);
         predictedSpeed = car.speed + predictedAcceleration * delta;
         if(predictedSpeed < 0){
             predictedSpeed = 0;
@@ -49,5 +50,17 @@ public class CarV2Engine implements Engine {
     @Override
     public Angle getPredictedAngle() {
         return new Angle(predictedAngle);
+    }
+
+    float getAcceleration(float delta){
+        if(car.inputData().getBrake() > 0){
+            return CarV2Const.BRAKE * delta * car.inputData().getBrake() / 100;
+        }
+        float ans = 0;
+        if(car.inputData().getGas() > 0){
+            ans += CarV2Const.GAS * delta * car.inputData().getGas() / 100;
+        }
+        // TODO - gear should impact acceleration
+        return ans;
     }
 }

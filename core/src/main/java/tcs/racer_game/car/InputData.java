@@ -25,9 +25,7 @@ public interface InputData {
 
     float getTurnNormalized();
 
-    //TODO: get rid of this
-    float getAcceleration(float delta);
-
-    //TODO: get rid of this (or just rename)
-    void updateTurnDrop(float delta);
+    //Removed as they should not be in the interface
+//    float getAcceleration(float delta);
+//    void updateTurnDrop(float delta);
 }
